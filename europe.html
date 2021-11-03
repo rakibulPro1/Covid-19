@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 Info-Europe</title>
+    <link rel="icon" href="./img/favicon.png"/>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/258677c3df.js" crossorigin="anonymous"></script>
+    <link href="./jqvmap/dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./img/logo.png" alt="logo" class="logo">
+                <span class="website_name">Covtrack</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link mr-4" href="index.html">
+                            <i class="fas fa-tachometer-alt mr-2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe-americas mr-2"></i>
+                        Continent
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="world.html">World</a>
+                        <a class="dropdown-item" href="asia.html">Asia</a>
+                        <a class="dropdown-item" href="europe.html">Europe</a>
+                        <a class="dropdown-item" href="africa.html">Africa</a>
+                        <a class="dropdown-item" href="australia.html">Australia</a>
+                        <a class="dropdown-item" href="south-america.html">South America</a>
+                        <a class="dropdown-item" href="north-america.html">North America</a>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-lg-7">
+                <div class="card">
+                    <div class="card-header"><h3>Europe</h3></div>
+                    <div class="card-body">
+                        <div id="vmap" style="height: 470px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="row">
+                    <div class="col-xl-12 mt-3 mt-xl-0">
+                        <div class="d-flex mb-4">
+                            <img src="https://disease.sh/assets/img/flags/es.png" alt="" id="flag" width="70">
+                            <span><h4 id="countryName" class="ml-4 mt-2">Spain</h4></span>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex">
+                            <div class="icon gradient-1">
+                                <i class="fas fa-virus"></i>
+                            </div>
+                            <div>
+                                <h5>Total Cases</h5>
+                                <h2 id="total_cases">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex ">
+                            <div class="icon gradient-3">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div>
+                                <h5>Today Cases</h5>
+                                <h2 id="today_cases">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex ">
+                            <div class="icon gradient-9">
+                                <i class="fas fa-procedures"></i>
+                            </div>
+                            <div>
+                                <h5>Today Death</h5>
+                                <h2 id="today_deaths">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex ">
+                            <div class="icon gradient-12">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <div>
+                                <h5>Total Death</h5>
+                                <h2 id="total_deaths">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex">
+                            <div class="icon gradient-4">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <div>
+                                <h5>Recovered</h5>
+                                <h2 id="recovered">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex">
+                            <div class="icon gradient-8">
+                                <i class="fas fa-head-side-cough"></i>
+                            </div>
+                            <div>
+                                <h5>Active</h5>
+                                <h2 id="active">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex">
+                            <div class="icon gradient-14">
+                                <i class="fas fa-lungs-virus"></i>
+                            </div>
+                            <div>
+                                <h5>Critical</h5>
+                                <h2 id="critical">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex">
+                            <div class="icon gradient-15">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div>
+                                <h5 style="font-size: 12px;">Death Per Millioin</h5>
+                                <h2 id="death_per_million">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="world-widget d-flex">
+                            <div class="icon gradient-9">
+                                <i class="fas fa-skull"></i>
+                            </div>
+                            <div>
+                                <h5 style="font-size: 12px;">Cases Per Millioin</h5>
+                                <h2 id="cases_per_million">00</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="d-flex mt-4 mb-2">
+            <p>Developed by Rakibul islam</p>
+            <div class="ml-auto">
+                <a href="https://facebook.com/S.R.ShuvaDev1"><i class="fab fa-facebook"></i></a></i>
+                <a href="https://facebook.com/S.R.ShuvaDev1"><i class="fab fa-youtube"></i></a></i>
+                <a href="https://facebook.com/S.R.ShuvaDev1"><i class="fab fa-github"></i></a></i>
+            </div>
+        </footer>
+    </div>
+
+    <div id="hoverMapInfo" class="m-0 p-5 d-none">
+        <img src="https://disease.sh/assets/img/flags/bd.png" width="30" id="hover_flag">
+        <span id="cName">Bangladesh</span>
+        <p class="p-0 m-0">Cases: <span id="hover_cases">200</span></p>
+        <p class="p-0 m-0">Death: <span id="hover_death">200</span></p>
+        <p class="p-0 m-0">Active: <span id="hover_active">200</span></p>
+        <p class="p-0 m-0">Recovered: <span id="hover_recovered">500</span></p>
+    </div>
+
+    <script src="./jqvmap/dist/jquery.min.js"></script>
+    <script src="./jqvmap/dist/jquery.vmap.js"></script>
+    <script src="./jqvmap/dist/maps/continents/jquery.vmap.europe.js"></script>
+    <script src="./bootstrap/js/propper.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./jqvmap/dist/lgdData.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        window.onload = function(e) {
+            axios.get('https://disease.sh/v2/countries/es')
+            .then(({data}) => {
+                console.log(data)
+                document.getElementById('total_cases').innerText = data.cases
+                document.getElementById('today_cases').innerText = data.todayCases
+                document.getElementById('today_deaths').innerText = data.todayDeaths
+                document.getElementById('total_deaths').innerText = data.deaths
+                document.getElementById('recovered').innerText = data.recovered
+                document.getElementById('active').innerText = data.active
+                document.getElementById('critical').innerText = data.critical
+                document.getElementById('death_per_million').innerText = data.deathsPerOneMillion
+                document.getElementById('cases_per_million').innerText = data.casesPerOneMillion
+            })
+        }
+
+
+        let hoverMapInfo = document.getElementById('hoverMapInfo')
+        let hover_death = document.getElementById('hover_death')
+        let hover_flag = document.getElementById('hover_flag')
+        let hover_cases = document.getElementById('hover_cases')
+        let hover_active = document.getElementById('hover_active')
+        let hover_recovered = document.getElementById('hover_recovered')
+        let cName = document.getElementById('cName')
+        function mapData(data) {
+            hoverMapInfo.className = 'p-1'
+            hover_cases.innerText = data.cases
+            hover_death.innerText = data.deaths
+            hover_active.innerText = data.active
+            hover_recovered.innerText = data.recovered
+            hover_flag.src = data.countryInfo.flag
+            cName.innerText = data.country
+        }
+
+        let flag = document.getElementById('flag')
+        let countryName = document.getElementById('countryName')
+        let cases = document.getElementById('total_cases')
+        let todayCases = document.getElementById('today_cases')
+        let todayDeaths = document.getElementById('today_deaths')
+        let deaths = document.getElementById('total_deaths')
+        let recovered = document.getElementById('recovered')
+        let active = document.getElementById('active')
+        let critical = document.getElementById('critical')
+        let deathsPerOneMillion = document.getElementById('death_per_million')
+        let casesPerOneMillion = document.getElementById('cases_per_million')
+        function fillAllInfo(data) {
+            flag.src = data.countryInfo.flag
+            countryName.innerText = data.country
+            cases.innerText = data.cases
+            todayCases.innerText = data.todayCases
+            todayDeaths.innerText = data.todayDeaths
+            deaths.innerText = data.deaths
+            recovered.innerText = data.recovered
+            active.innerText = data.active
+            critical.innerText = data.critical
+            deathsPerOneMillion.innerText = data.deathsPerOneMillion
+            casesPerOneMillion.innerText = data.casesPerOneMillion
+        }
+        jQuery('#vmap').vectorMap({
+            map: 'europe_en',
+            backgroundColor: '#fff',
+            color: '#000',
+            hoverOpacity: 0.7,
+            selectedColor: '#7B6FFF',
+            enableZoom: true,
+            showTooltip: true,
+            values: lgdData,
+            scaleColors: ['#D60000', '#780000'],
+            normalizeFunction: 'polynomial',
+            onLabelShow: function(_, label, code) {
+                axios.get(`https://disease.sh/v2/countries/${code}`)
+                .then(res => {
+                    label[0].innerText = '';
+                    label[0].innerHTML = '';
+                    mapData(res.data)
+                    label.append(hoverMapInfo)
+                })
+            },
+            
+            selectedRegions: ['es'],
+            onRegionSelect: function(event, code, region) {
+                axios.get(`https://disease.sh/v2/countries/${code}`)
+                .then(res => {
+                    fillAllInfo(res.data)
+                })
+            }
+        });
+    </script>
+    
+</body>
+</html>
